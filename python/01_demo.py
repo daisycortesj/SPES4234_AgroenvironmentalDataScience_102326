@@ -80,19 +80,21 @@ plt.show() # show the plot.
 ###  5. SEABORN: Boxplot of yield by nitrogen rate and site ###
 #######################################################
 # seaborn reads COLUMN NAMES straight from the table.
+# matplotlib uses a .index and a .values to plot the data.
+# seaborn  is different. it reads column names straight from the table.
 # hue="site" gives one color per site AND a legend, no extra code needed.
 
-fig, ax = plt.subplots(figsize=(8, 5))
+fig, ax = plt.subplots(figsize=(8, 5)) # create a figure and axes object.
 sns.boxplot(data=field_clean, x="nitrogen_kg_ha", y="yield_t_ha",
-            hue="site", palette=site_colors, showfliers=False, ax=ax)
+            hue="site", palette=site_colors, showfliers=False, ax=ax) # plot a boxplot of the yield_t_ha column by nitrogen_kg_ha column and site column.   
 sns.stripplot(data=field_clean, x="nitrogen_kg_ha", y="yield_t_ha",
-              hue="site", dodge=True, palette={"Bottomland": "black", "Upland": "black"},
+              hue="site", dodge=True, palette={"Bottomland": "black", "Upland": "black"}, # plot a strip plot of the yield_t_ha column by nitrogen_kg_ha column and site column.
               alpha=0.4, legend=False, ax=ax)           # black dots on top of the boxes
-ax.set_xlabel("Nitrogen rate (kg N/ha)")
-ax.set_ylabel("Grain yield (t/ha)")
-ax.set_title("More nitrogen, more yield (gains shrink above 120 kg N/ha)")
-ax.legend(title="Site")
-plt.show()
+ax.set_xlabel("Nitrogen rate (kg N/ha)") # set the x-axis label.
+ax.set_ylabel("Grain yield (t/ha)") # set the y-axis label.
+ax.set_title("More nitrogen, more yield (gains shrink above 120 kg N/ha)") # set the title.
+ax.legend(title="Site") # add a legend.
+plt.show() # show the plot.
 
 
 #######################################################
@@ -115,16 +117,17 @@ plt.show() # show the plot. add a confidence band around the line plot.
 ###   7. FACETS: Line plot of yield by nitrogen rate and site with confidence bands by year ###
 #######################################################
 # relplot(..., col="year") makes one panel per year (like facet_wrap in R)
+# small multiples are a way to show the same data in different ways.
 
-g = sns.relplot(data=field_clean, x="nitrogen_kg_ha", y="yield_t_ha", # plot a line plot of the mean yield for each nitrogen rate and site.
-                hue="site", palette=site_colors, col="year",
-                kind="line", marker="o", height=4.5)
-g.set_axis_labels("Nitrogen rate (kg N/ha)", "Grain yield (t/ha)")
-g.set(xticks=[0, 60, 120, 180])
+g = sns.relplot(data=field_clean, x="nitrogen_kg_ha", y="yield_t_ha", # we make small multiples: the same plot repeated, one panel per year, side by side, with the same x-axis and y-axis.
+                hue="site", palette=site_colors, col="year", # facet_wrap in R. col="year" means one panel per year.
+                kind="line", marker="o", height=4.5) # plot a line plot of the mean yield for each nitrogen rate and site.
+g.set_axis_labels("Nitrogen rate (kg N/ha)", "Grain yield (t/ha)") # set the x-axis and y-axis labels.
+g.set(xticks=[0, 60, 120, 180]) # set the x-axis ticks.
 g.set_titles("{col_name}")              # panel titles "2024", "2025"
-g.legend.set_title("Site")
-g.figure.suptitle("The drier 2025 season gave lower yields at both sites", y=1.03)
-plt.show()
+g.legend.set_title("Site") # add a legend.
+g.figure.suptitle("The drier 2025 season gave lower yields at both sites", y=1.03) # set the title.
+plt.show() # show the plot.
 
 
 #######################################################
