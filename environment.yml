@@ -1,0 +1,15 @@
+# Conda environment for the workshop.
+# Create it:   conda env create -f environment.yml
+# Use it:      conda activate plant-dataviz
+name: plant-dataviz
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - numpy
+  - pandas
+  - matplotlib
+  - seaborn
+  - jupyterlab
+  - plotnine     # optional: ggplot2 grammar in Python
+  - plotly       # optional: interactive plots

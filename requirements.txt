@@ -1,0 +1,9 @@
+# Core packages for the workshop (install with: pip install -r requirements.txt)
+numpy
+pandas
+matplotlib
+seaborn
+jupyterlab
+# Optional "tool tour" packages used in 01_demo.ipynb (safe to skip)
+plotnine
+plotly
