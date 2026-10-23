@@ -5,7 +5,7 @@
 #           and does that depend on the variety?
 #
 # HOW THIS WORKS
-# * Work with a neighbor. We'll do Steps 1–6 together
+# * Work with a neighbor. 
 # * Replace every ___ (three underscores) with the right code, then run it.
 # * Hints are in the comments. Answers: R/solutions/02_guided_exercise_SOLUTION.R
 # * Error "unexpected input" (pointing at ___) just means a blank is still empty.
