@@ -9,7 +9,7 @@ You'll make the same kinds of plots in **Python** and **R** using one (simulated
 
 # Start here
 
-You'll use the **same Python + Jupyter setup you already use in this course.**
+You'll use the **same Python setup you already use in this course**, plus RStudio if you follow the R scripts.
 
 ### 1. Open a terminal
 - **Mac:** open **Terminal** (Cmd + Space → type "Terminal").
@@ -32,30 +32,34 @@ This creates a folder called `SPES4234_AgroenvironmentalDataScience_102326` cont
 cd SPES4234_AgroenvironmentalDataScience_102326
 ```
 
-### 5. Open Jupyter (pick ONE option)
+### 5. Run the live demo (pick ONE option)
 
-**Option A: Use your usual setup (most people, recommended for today)**
-Open Jupyter the way you normally do for this class (e.g., type `jupyter lab` in this terminal, or use Anaconda Navigator / VS Code).
+**Option A: Use your usual Python (most people, recommended for today)**
+From this folder, in the same terminal:
+```bash
+python3 python/01_demo.py
+```
+On Windows with Anaconda, use `python` instead of `python3`. Each plot opens in its own window. Close the window to continue to the next plot.
 
 **Option B (optional): Create a separate environment for this workshop**
 An *environment* is a separate "box" with its own Python and packages, so this workshop can't interfere with your other projects. The file `environment.yml` is the shopping list of what goes in the box. Requires Anaconda/conda.
 ```bash
 conda env create -f environment.yml    # build the box (once; takes a few minutes)
 conda activate spes4234-dataviz        # step into the box (each time you work)
-jupyter lab                            # open Jupyter using what's in the box
+python python/01_demo.py               # run the demo using what's in the box
 ```
 When you're done: `conda deactivate`.
 
-### 6. Open the first notebook and check it works
-In Jupyter, go to `python/` → open **`01_demo.ipynb`**. Click in the first code cell and press **Shift + Enter**. You should see version numbers print.
+### 6. Edit the scripts in an editor
+Open the `.py` files in the editor you already use for this class (VS Code, Cursor, or a plain text editor). Save, then re-run the command above. For the R half, double-click `SPES4234_AgroenvironmentalDataScience_102326.Rproj` and run lines in RStudio with **Cmd + Return** (Mac) or **Ctrl + Enter** (Windows).
 
 **What you'll do in class**
 
-| Part |  Python (hands-on, everyone) |  R (instructor demo) |
+| Part | Python (hands-on, everyone) | R (instructor demo) |
 |---|---|---|
-| 1 · Live demo | `python/01_demo.ipynb` | Watch on screen · `R/01_demo.R` |
-| 2 · Guided exercise | `python/02_guided_exercise.ipynb` | Optional if you have RStudio: `R/02_guided_exercise.R` |
-| 3 · Independent practice | `python/03_independent_practice.ipynb` | Optional: `R/03_independent_practice.R` |
+| 1 · Live demo | `python/01_demo.py` | Watch on screen · `R/01_demo.R` |
+| 2 · Guided exercise | `python/02_guided_exercise.py` | Optional if you have RStudio: `R/02_guided_exercise.R` |
+| 3 · Independent practice | `python/03_independent_practice.py` | Optional: `R/03_independent_practice.R` |
 | Solutions | `python/solutions/` | `R/solutions/` |
 
 
@@ -101,44 +105,50 @@ In Jupyter, go to `python/` → open **`01_demo.ipynb`**. Click in the first cod
 
 ```
 SPES4234_AgroenvironmentalDataScience_102326/
-├── README.md                    ← you are here
-├── SETUP.md                     ← optional: installing Python or R from scratch
-├── SPES4234_AgroenvironmentalDataScience_102326.Rproj    ← double-click to open the R project in RStudio
-├── requirements.txt / environment.yml   ← Python package lists
+├── README.md                         ← you are here
+├── SPES4234_AgroenvironmentalDataScience_102326.Rproj   ← double-click to open the R project in RStudio
+├── requirements.txt                  ← Python packages (pip)
+├── environment.yml                   ← Python packages (conda)
 ├── data/
-│   ├── field_trial.csv          ← main dataset (simulated maize N trial, 192 plots)
-│   ├── growth_curves.csv        ← weekly plant height (for practice)
-│   ├── de_results.csv           ← simulated RNA-seq results (bonus volcano plot)
-│   ├── make_data.py             ← how the data were simulated
-│   └── README.md                ← data dictionary (what every column means)
+│   ├── field_trial.csv               ← main dataset (simulated maize N trial, 192 plots)
+│   ├── growth_curves.csv             ← weekly plant height (for practice)
+│   ├── de_results.csv                ← simulated RNA-seq results (bonus volcano plot)
+│   ├── make_data.py                  ← how the data were simulated
+│   └── README.md                     ← data dictionary (what every column means)
 ├── python/
-│   ├── 00_check_setup.py
-│   ├── 01_demo.ipynb
-│   ├── 02_guided_exercise.ipynb
-│   ├── 03_independent_practice.ipynb
-│   ├── argparse_example/quick_plot.py   ← plotting from the command line
+│   ├── 01_demo.py                    ← live demo (run from the terminal)
+│   ├── 02_guided_exercise.py         ← fill-in-the-blank exercise
+│   ├── 03_independent_practice.py    ← write the plots yourself
+│   ├── argparse_example/
+│   │   └── quick_plot.py             ← plotting from the command line
 │   └── solutions/
+│       ├── 02_guided_exercise_SOLUTION.py
+│       └── 03_independent_practice_SOLUTION.py
 ├── R/
-│   ├── 00_install_packages.R
-│   ├── 00_check_setup.R
-│   ├── 01_demo.R / 01_demo.ipynb          ← script (RStudio) / notebook (Colab backup)
-│   ├── 02_guided_exercise.ipynb / .R
-│   ├── 03_independent_practice.ipynb / .R
+│   ├── 00_install_packages.R         ← install ggplot2, dplyr, and friends (once)
+│   ├── 01_demo.R                     ← same demo, in RStudio
+│   ├── 02_guided_exercise.R
+│   ├── 03_independent_practice.R
 │   └── solutions/
-├── examples/                    ← past projects: low-level matplotlib, volcano plots
-├── figures/                     ← your saved plots go here
+│       ├── 02_guided_exercise_SOLUTION.R
+│       └── 03_independent_practice_SOLUTION.R
+├── examples/                         ← past projects: low-level matplotlib, volcano plots
+│   ├── README.md
+│   └── python/
+│       ├── marginal_histograms_two_ways.py
+│       └── volcano_cli.py
+├── figures/                          ← saved plots go here
 └── docs/
-    ├── student_instructions.md
-    ├── understanding_check.md
-    ├── troubleshooting.md
+    ├── understanding_check.md        ← end-of-class questions
     ├── git_basics.md
     ├── package_reference_python.md
     └── package_reference_R.md
 ```
 
 
-##  Credits & further learning
+##  Further learning
 
+* [*Practical Computing for Biologists*](https://practicalcomputing.org/) — Steven H. D. Haddock & Casey W. Dunn; [example files and quick reference](https://practicalcomputing.org/downloads.html)
 * Lesson structure inspired by The Carpentries' teaching practices: [carpentries.org](https://carpentries.org)
 * [*Fundamentals of Data Visualization*](https://clauswilke.com/dataviz/) — Claus O. Wilke (free online)
 * [*R for Data Science* (2e)](https://r4ds.hadley.nz/) — Wickham, Çetinkaya-Rundel & Grolemund (free online)
