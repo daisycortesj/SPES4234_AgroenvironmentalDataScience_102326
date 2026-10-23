@@ -1,5 +1,5 @@
 #######################################################
-###  03 · INDEPENDENT PRACTICE (R) — ~7 minutes     ###
+###  03 · INDEPENDENT PRACTICE    ###
 #######################################################
 # IN CLASS, try Challenge A. At Home, try Challenge B, C, and D.
 # No blanks this time — you write the code.
